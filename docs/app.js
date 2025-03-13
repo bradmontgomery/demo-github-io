@@ -54,4 +54,31 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }, 2000);
     }
   });
+
+  // Battery API
+  navigator.getBattery().then((battery) => {
+    console.log("Battery Data: ", battery);
+
+    const isCharging = document.getElementById("batteryCharging");
+    isCharging.innerText = battery.charging ? "Yes" : "No";
+    isCharging.classList.add(battery.charging ? "is-success" : "is-danger");
+
+    const batteryLevel = document.getElementById("batteryLevel");
+    batteryLevel.innerText = Math.round(battery.level * 100) + "%";
+
+    if (battery.level > 0.5) {
+      batteryLevel.classList.add("is-success");
+    } else if (battery.level > 0.25) {
+      batteryLevel.classList.add("is-warning");
+    } else {
+      batteryLevel.classList.add("is-danger");
+    }
+
+    try {
+      const minutesLeft = Math.round(battery.dischargingTime / 60);
+      document.getElementById("batteryRemaining").innerText = `${minutesLeft} minutes`;
+    } catch (e) {
+      console.error("Unable to calculate battery time left: ", e);
+    }
+  });
 });

@@ -8,6 +8,18 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
         <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
         <script defer src="app.js"></script>
+
+        <style type="text/css">
+            #map {
+                height: 400px;
+            }
+            #mypopover {
+                width: 150px;
+                height: 150px;
+                margin: 0;
+                padding: 1em;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -36,6 +48,16 @@
                     </div>
                     <div class="column">
                         <h2>Popover</h2>
+
+                        <p>This is an HTML-only version of a popover:<br/>
+                            <button class="button" popovertarget="mypopover">Toggle the popover</button>
+                        </p>
+                        <div id="mypopover" popover>This is the Pop Over content</div>
+
+                        <p>To see a popover triggered by JavaScript, hit <kbd>?</kbd></p>
+                        <div id='js-popover' class="notification is-primary" popover>
+                            Hello from JavaScript.
+                        </div>
 
                     </div>
                 </div>

@@ -43,4 +43,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       console.error("Unable to get user positon: " + error);
     }
   );
+
+  // Popover
+  const popoverElement = document.getElementById("js-popover");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "?") {
+      popoverElement.showPopover();
+      setTimeout(() => {
+        popoverElement.hidePopover();
+      }, 2000);
+    }
+  });
 });
